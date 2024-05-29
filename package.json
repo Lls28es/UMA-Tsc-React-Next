@@ -26,9 +26,6 @@
     "sweetalert2": "^11.7.0",
     "sweetalert2-react-content": "^5.0.7"
   },
-  "engines": {
-    "node": ">=18"
-  },
   "devDependencies": {
     "@types/node": "20.12.12",
     "@types/react": "18.3.3",
