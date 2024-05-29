@@ -1,0 +1,62 @@
+@media screen and (max-width: 1550px) {
+    //m1550
+
+    // #home-modal .containerWidth2 {
+    //     left: 17%;
+    // }
+}
+
+@media screen and (max-width: 1300px) {
+    //m1300
+}
+
+@media screen and (max-width: 1100px) {
+    //m1100
+
+    // #home-modal .containerWidth2 {
+    //     width: 80% !important;
+    //     left: 20%;
+    // }
+}
+
+@media screen and (max-width: 900px) {
+    //m900
+}
+
+@media (max-width: 767px) {
+    //m767
+
+    // #home-modal .containerWidth2 {
+    //     width: 90% !important;
+    //     left: 5%;
+    // }
+
+    #home-modal .home-popup-container {
+        padding: 15px;
+
+        .button-modal {
+            left: -5px;
+            top: -5px;
+        }
+
+        .divDataCalend {
+            border-right: none;
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    //m700
+}
+
+@media (max-width: 400px) {
+    //m400
+}
+
+@media (max-width: 340px) {
+    //m350
+}
+
+@media (max-width: 300px) {
+    //m300
+}

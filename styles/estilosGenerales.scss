@@ -1,0 +1,266 @@
+* {
+    margin: 0px;
+}
+
+// *,
+// ::after,
+// ::before {
+//     box-sizing: border-box;
+// }
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+button {
+    outline: none !important;
+    border: none;
+
+    &:focus,
+    &:active,
+    & :hover {
+        outline: none;
+        border: none;
+        // box-shadow: none;
+    }
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+/* ----- font family ----- */
+
+.ff-app {
+    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol" !important;
+}
+
+.ff-Inter {
+    font-family: '__Inter_8e2fd7';
+}
+
+.ff-sys {
+    font-family: "Raleway", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
+}
+
+.ff-gotham {
+    font-family: Gotham, Arial, sans-serif;
+}
+
+.ff-inherit {
+    font-family: inherit;
+    letter-spacing: 0.3px;
+}
+
+/* ----- font style ----- */
+.fs-it {
+    font-style: italic !important;
+}
+
+/* ----- font weight ----- */
+
+.fw-500 {
+    font-weight: 500 !important;
+}
+
+.fw-600 {
+    font-weight: 600 !important;
+}
+
+.fw-700 {
+    font-weight: 700 !important;
+}
+
+.fw-800 {
+    font-weight: 800 !important;
+}
+
+.fw-900 {
+    font-weight: 900 !important;
+}
+
+.eb {
+    font-weight: 900;
+}
+
+/* ----- line height ----- */
+
+.ls-0p25 {
+    letter-spacing: 0.25px;
+}
+
+.ls-0p5 {
+    letter-spacing: 0.5px;
+}
+
+.ls-1p {
+    letter-spacing: 1px;
+}
+
+.lh-0p7 {
+    line-height: 0.7 !important;
+}
+
+.lh-1p {
+    line-height: 1 !important;
+}
+
+.lh-1p1 {
+    line-height: 1.1 !important;
+}
+
+.lh-1p2 {
+    line-height: 1.2;
+}
+
+.lh-1p3 {
+    line-height: 1.3;
+}
+
+.lh-1p5 {
+    line-height: 1.5;
+}
+
+.lh-26 {
+    line-height: 26px;
+}
+
+.pdl-35 {
+    padding-left: 35px;
+}
+
+/* --------------- BOOTSTRAP --------------- */
+
+.heightAuto {
+    height: auto;
+}
+
+.height-416 {
+    height: 416px !important;
+}
+
+.height-100 {
+    height: 100%;
+}
+
+.height-95 {
+    height: 95%;
+}
+
+.height-87 {
+    height: 87%;
+}
+
+.d-contents {
+    display: contents !important;
+}
+
+.f-wrape {
+    flex-wrap: nowrap !important;
+}
+
+.vert-align {
+    vertical-align: middle;
+}
+
+.vert-align-super {
+    vertical-align: super;
+}
+
+.br-none {
+    border-radius: 0px !important;
+}
+
+/* ------ swal ------ */
+
+.swal2-html-container {
+    margin: 25px 25px !important;
+    height: min-content !important;
+    padding-top: 10px !important;
+    font-weight: 400 !important;
+}
+
+.swal2-actions {
+    margin: 10px 0 15px !important;
+    height: min-content !important;
+}
+
+.swal-demo-box {
+    height: 80vh;
+    min-width: 90%;
+}
+
+// .swal2-title {
+//     padding-top: 20px !important;
+// }
+
+// .swal2-styled.swal2-confirm {
+//     margin: 0px 10px;
+//     background: #8ad2a3 !important;
+//     outline-color: #d3d3d3 !important;
+//     border-color: #d3d3d3 !important;
+//     box-shadow: 0 0 0 3px #8ad2a3 !important;
+// }
+
+// .swal2-styled.swal2-cancel {
+//     margin: 0px 10px;
+//     background: #d28a8a !important;
+//     outline-color: #d3d3d3 !important;
+//     border-color: #d3d3d3 !important;
+//     box-shadow: 0 0 0 3px #d28a8a !important;
+// }
+
+// .swal2-icon,
+// .swal2-image {
+//     margin-top: 25px !important;
+//     margin-bottom: 15px !important;
+// }
+
+// .swal2-title {
+//     padding-top: 5px !important;
+//     height: min-content !important;
+// }
+
+// .swal-demo-box,
+// .swal-demo-tematica-box,
+// .swal-demo-box-courses,
+// .swal-demo-box-users {
+//     width: 80% !important;
+//     max-width: 670px !important;
+// }
+
+// .swal-demo-box .swal2-title,
+// .swal-demo-tematica-box .swal2-title,
+// .swal-demo-box-courses .swal2-title,
+// .swal-demo-box-users .swal2-title,
+// .swal-demo-box p,
+// .swal-demo-tematica-box p,
+// .swal-demo-box-courses p,
+// .swal-demo-box-users p,
+// .swal-demo-box h2,
+// .swal-demo-tematica-box h2 {
+//     font-size: 18px !important;
+//     font-weight: 400 !important;
+//     letter-spacing: 0.1px;
+// }
+
+// .swal-demo-box-courses h2,
+// .swal-demo-box-users h2 {
+//     font-size: 20px !important;
+//     font-weight: 400 !important;
+//     letter-spacing: 0.1px;
+// }
+
+// .swal-distance-button .swal2-title {
+//     padding-bottom: 10px;
+// }
+
+// .swal-distance-button .swal2-actions button {
+//     margin-bottom: 10px;
+//     padding: 7px 10px;
+//     font-size: 15px;
+// }
