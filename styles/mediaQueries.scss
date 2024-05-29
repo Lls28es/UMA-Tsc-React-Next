@@ -6,9 +6,58 @@
     // }
 }
 
+@media (max-width: 1370px) {
+    //m1370
+
+    // .logo {
+    //     width: 28vw;
+    // }
+
+    #header a,
+    #header-transparent a {
+        font-size: 0.9rem;
+    }
+}
+
 @media screen and (max-width: 1300px) {
     //m1300
 }
+
+@media (max-width: 1170px) {
+    //m1170
+
+    #navbar-toggler {
+        display: none !important;
+    }
+
+    .collapse:not(.show) {
+        display: none !important;
+    }
+
+    .navbar-toggler {
+        display: flex !important;
+        padding: 0.25rem 0.75rem;
+        font-size: 1.25rem;
+        line-height: 1;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+    }
+
+    .navbar {
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+    }
+}
+
 
 @media screen and (max-width: 1100px) {
     //m1100
@@ -17,6 +66,39 @@
     //     width: 80% !important;
     //     left: 20%;
     // }
+}
+
+
+@media (max-width: 991px) {
+    //m991
+
+    .layoutChild {
+        min-height: 94vh;
+        padding: 0px;
+        margin-top: 0px;
+    }
+
+    // .layoutChild>div {
+    //     // padding-top: 0px !important;
+    // }
+
+    #header {
+        box-shadow: none;
+        position: inherit;
+
+        nav {
+            padding: 10px 0px 0px 0px !important;
+        }
+
+        .collapse li .nav-link {
+            padding: 2px;
+        }
+
+        .navbar-expand-lg .show {
+            box-shadow: 0px 8px 9px 0px #a8a7a781;
+            padding-bottom: 15px;
+        }
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -49,6 +131,16 @@
     //m700
 }
 
+@media (max-width: 700px) {
+    //m600
+
+    #header-transparent #navbarToggler.show {
+        background: #001637;
+        z-index: 99;
+        padding: 0px 20px;
+    }
+}
+
 @media (max-width: 400px) {
     //m400
 }
@@ -58,5 +150,9 @@
 }
 
 @media (max-width: 300px) {
-    //m300
+    //m340
+
+    .navbar {
+        padding: 8px 1px !important;
+    }
 }

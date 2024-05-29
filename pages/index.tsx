@@ -15,17 +15,21 @@ interface MonthData {
   name: string;
   endDate: string;
   urlApi: string;
-  dataApi: any[];
+  dataApi: NasaApiResponse[];
 }
 
 interface NasaApiResponse {
+  id: string;
   date: string;
   url: string;
   thumbnail_url: string;
   yearStr: string;
 }
 
-function Home() {
+let modifiers: Record<string, Date> = {};
+let modifiersStyles: Record<string, React.CSSProperties> = {};
+
+const Home: React.FC = () => {
   const [actualDate, setActualDate] = useState<Date>(new Date());
   const [yearStr, setYearStr] = useState<string>("");
   const [months, setMonths] = useState<MonthData[]>([]);
@@ -71,6 +75,28 @@ function Home() {
       .then((results) => {
         results.forEach((x, ind) => {
           aux[ind].dataApi = x.data;
+          if (x.data.length !== 0) {
+            x.data.forEach((day: NasaApiResponse) => {
+              if (day.url.includes('tube')) {
+                day.url = day.thumbnail_url || '';
+              }
+              if (day.url.includes(' ')) {
+                day.url = day.url.replace(' ', '%20');
+              }
+
+              const numbersDate = day.date.split('-').map(Number);
+              day.id = `d${day.date}`;
+              modifiers[day.id] = new Date(numbersDate[0], numbersDate[1] - 1, numbersDate[2]);
+              modifiersStyles[day.id] = {
+                background: `url(${day.url})`,
+                backgroundSize: 'cover',
+                borderRadius: '3px',
+                textShadow: '1.2px 1.2px 0px #020202',
+                color: '#ffffff',
+                opacity: 1,
+              };
+            });
+          }
         });
         setMonths(aux);
       })
@@ -93,15 +119,20 @@ function Home() {
         );
 
         if (foundDay.length !== 0) {
-          if (foundDay[0].url.includes('tube')) {
-            foundDay[0].url = foundDay[0].thumbnail_url || '';
-          }
+
           setActualData(foundDay[0]);
           setStateModal(true);
         }
       }
     }
   };
+
+  const backModal = () => {
+    setStateModal(false)
+    setActualData(null);
+  }
+
+
 
   return (
     <div className="container-fluid px-0 disp_cont">
@@ -121,10 +152,10 @@ function Home() {
           >
             {months.length ? <>{
               months.map((x, ind) => {
+
                 return (
                   <DayPicker
                     key={ind}
-                    // dateFormat="YYYY-MM-DD"
                     mode="single"
                     selected={selected}
                     onSelect={(value) => setSelected(value)}
@@ -135,18 +166,20 @@ function Home() {
                       after: actualDate!,
                       before: new Date('12,30,2124'),
                     }}
-                    className="form-control"
+                    className="form-control date-picker"
+                    modifiers={modifiers}
+                    modifiersStyles={modifiersStyles}
                   />
                 );
               })}</> : null}
           </div>
         </Layout>
       </div>
-      <div id="home-modal" className={stateModal ? '' : 'd-none'}>
+      {actualData ? <div id="home-modal" className={stateModal ? '' : 'd-none'}>
         <div
           id="home-modal-overlay"
           className="home-modal-overlay pointer"
-          onClick={() => setStateModal(false)}
+          onClick={() => backModal()}
         ></div>
         <div
           id="home-modal-container"
@@ -154,7 +187,7 @@ function Home() {
         >
           <button
             className="close-modal button-modal"
-            onClick={() => setStateModal(false)}
+            onClick={() => backModal()}
           >
             <RiCloseCircleLine
               color="#5487cf"
@@ -162,9 +195,9 @@ function Home() {
               strokeWidth="0.5"
             />
           </button>
-          <ModalText data={actualData!} />
+          {actualData !== null ? <ModalText data={actualData} /> : null}
         </div>
-      </div>
+      </div> : null}
     </div>
   );
 }
