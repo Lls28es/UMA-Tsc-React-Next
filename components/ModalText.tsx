@@ -27,7 +27,7 @@ const ModalText: React.FC<ModalTextProps> = ({ data }) => {
         dateModified: new Date()
     });
 
-    useEffect(() => {
+    useEffect(() => { // Función que hace el llamado a la ruta en API que busca en al base de datos si existe un comentario para el día clickeado, si lo encuentra lo guarda para luego ser mostrado en la pantalla, para buscar se usa el id que creamos en la página index.tsc .
         axios
             .get(`/api/getPost?id=${data.id}`)
             .then((response) => {
@@ -45,7 +45,7 @@ const ModalText: React.FC<ModalTextProps> = ({ data }) => {
             });
     }, [data.id]);
 
-    const createComment = (comment: string, id: string) => {
+    const createComment = (comment: string, id: string) => { // Función que envía a la ruta en API el comentario nuevo o modificado, esta ruta guarda en la base de datos el comentario usando el id del día.
         setSave(true);
         axios
             .post(`/api/createPost?id=${data.id}`, { comment, dateModified: new Date() })

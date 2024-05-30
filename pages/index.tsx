@@ -43,26 +43,26 @@ const Home: React.FC = () => {
     let aux: MonthData[] = [];
     let actualDay = moment().format('YYYY-MM-DD');
     let actualMonth = moment().format('MM');
-    let allUrls: Promise<any>[] = [];
+    let allUrls: Promise<any>[] = []; // Array que primero tendrá las promesas y luego reunirá los links de las imágenes.
 
     for (let i = 1; i < 13; i++) {
-      let daysMonth = new Date(`${moment().format('YYYY')},${i}`),
+      let daysMonth = new Date(`${moment().format('YYYY')},${i}`), // Obtenemos el último día de cada mes.
         y = daysMonth.getFullYear(),
-        m = daysMonth.getMonth() + 1;
-      let startDay = moment(new Date(y, m - 1, 1)).format('DD');
-      let startDate = `${y}-${m}-${startDay}`;
+        m = daysMonth.getMonth() + 1; // Sumamos un día al mes porque se está contando desde cero y necesitamos que cuente desde uno para crear el string con la fecha de cada día del mes.
+      let startDay = moment(new Date(y, m - 1, 1)).format('DD'); // Restamos un día porque la librería moment también cuenta desde cero los meses.
+      let startDate = `${y}-${m}-${startDay}`; // Creamos el string del primer ...
       let endDay = moment(new Date(y, m, 0)).format('DD');
-      let endDate = `${y}-${m}-${endDay}`;
+      let endDate = `${y}-${m}-${endDay}`; // y último día del mes para usarlo como intervalo en la ruta de la api de la NASA.
       let urlApiMonth = '';
 
       if (i <= Number(actualMonth)) {
         urlApiMonth = `https://api.nasa.gov/planetary/apod?api_key=P14kKudfh6DmRLij0f5l6skIXJmzFnr5DuvwHp1R&start_date=${startDate}&end_date=${i == Number(actualMonth) ? actualDay : endDate}&thumbs=true`;
-        allUrls.push(axios.get(urlApiMonth));
+        allUrls.push(axios.get(urlApiMonth)); // Juntamos las promesas.
       } else {
         urlApiMonth = '';
       }
 
-      aux.push({
+      aux.push({  // Reunimos los datos de cada mes, nombre, día en que finaliza, la ruta que nos dará los datos de la API para ese mes, etc.
         month: i,
         name: moment(String(i), 'MM').format('MMMM'),
         endDate: endDate,
@@ -71,22 +71,23 @@ const Home: React.FC = () => {
       });
     }
 
-    Promise.all(allUrls)
+    Promise.all(allUrls)  // Hacemos las llamadas a la API usando "Promise.all" para obtener todas las respuestas en el mismo momento.
       .then((results) => {
-        results.forEach((x, ind) => {
+        results.forEach((x, ind) => { // Recorremos el array de objeto que nos ha dado la API para cada mes y vamos modificándola a necesidad y guardando la información.
           aux[ind].dataApi = x.data;
           if (x.data.length !== 0) {
-            x.data.forEach((day: NasaApiResponse) => {
-              if (day.url.includes('tube')) {
+            x.data.forEach((day: NasaApiResponse) => { // Aquí recorremos los datos para cada día del mes.
+              if (day.url.includes('tube')) { // Si la propiedad url contiene el link de un video usamos la propiedad que tiene una captura del video.
                 day.url = day.thumbnail_url || '';
               }
-              if (day.url.includes(' ')) {
+              if (day.url.includes(' ')) { // Si la el link tiene un espacio provoca que la imagen no se vea en el cuadro del día correspondiente, solucionamos el problema.
                 day.url = day.url.replace(' ', '%20');
               }
 
-              const numbersDate = day.date.split('-').map(Number);
+              const numbersDate = day.date.split('-').map(Number);  // Vamos a crear un id para cada día, sirve para dar estilos a Day-picker, mostrar la imagen en el cuadro de cada día, para buscar la información de cada día y mostrarla, y para guardar y buscar comentarios sobre ese día en la base de datos.
               day.id = `d${day.date}`;
-              modifiers[day.id] = new Date(numbersDate[0], numbersDate[1] - 1, numbersDate[2]);
+
+              modifiers[day.id] = new Date(numbersDate[0], numbersDate[1] - 1, numbersDate[2]); // Aquí armamos los estilos para cada día con la imagen corresondiente al día.
               modifiersStyles[day.id] = {
                 background: `url(${day.url})`,
                 backgroundSize: 'cover',
@@ -106,7 +107,7 @@ const Home: React.FC = () => {
 
   }, []);
 
-  const getDay = (value: Date) => {
+  const getDay = (value: Date) => { // Función que nos permite buscar y mostrar en el modal la información del día clickeado, muestra el modal.
     let numberMonth = Number(moment(value).format('MM'));
     let stringDay = moment(value).format('YYYY-MM-DD');
 
@@ -127,12 +128,10 @@ const Home: React.FC = () => {
     }
   };
 
-  const backModal = () => {
+  const backModal = () => { // Oculta el modal.
     setStateModal(false)
     setActualData(null);
   }
-
-
 
   return (
     <div className="container-fluid px-0 disp_cont">
@@ -152,29 +151,29 @@ const Home: React.FC = () => {
           >
             {months.length ? <>{
               months.map((x, ind) => {
-
                 return (
                   <DayPicker
-                    key={ind}
-                    mode="single"
-                    selected={selected}
-                    onSelect={(value) => setSelected(value)}
-                    locale={es}
-                    onDayClick={(date) => getDay(date as Date)}
-                    month={new Date(Number(yearStr), x.month - 1)}
-                    disabled={{
+                    key={ind}  // Obligatorio para que react diferencie entre componentes/items y sus modificaciones.
+                    mode="single" // Sirve para seleccionar un día, Day-picker tiene una función que permite seleccionar intervalos.
+                    selected={selected} // Permite diferenciar el día seleccionado.
+                    onSelect={(value) => setSelected(value)} // Guarda el día seleccionado.
+                    locale={es} // Permite ver los nombres de los meses y días con su nombre en español
+                    onDayClick={(date) => getDay(date as Date)} // Activa la función antes explicada,
+                    disabled={{  // Desactiva los días posteriores al actual, estos no tienen imagen.
                       after: actualDate!,
                       before: new Date('12,30,2124'),
                     }}
                     className="form-control date-picker"
-                    modifiers={modifiers}
-                    modifiersStyles={modifiersStyles}
+                    month={new Date(Number(yearStr), x.month - 1)} // Permite usar los estilos creados para cada día mostrando así la imagen de cada día en el cuadro correspondiente.
+                    modifiers={modifiers} // Objeto con las fechas que se estilizarán.
+                    modifiersStyles={modifiersStyles} // Estilos para cada fecha
                   />
                 );
               })}</> : null}
           </div>
         </Layout>
       </div>
+      {/* Estilos que se superponen cuando se abre el modal y quedan por detrás del modal, permite cerrar este. */}
       {actualData ? <div id="home-modal" className={stateModal ? 'modalOn' : 'modalOff'}>
         <div
           id="home-modal-overlay"
@@ -195,6 +194,7 @@ const Home: React.FC = () => {
               strokeWidth="0.5"
             />
           </button>
+          {/*  Modal que muestra la información de la NASA para ese día y nos permite comentar. */}
           {actualData !== null ? <ModalText data={actualData} /> : null}
         </div>
       </div> : null}
