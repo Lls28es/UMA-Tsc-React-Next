@@ -39,6 +39,24 @@ const Header: React.FC<HeaderProps> = (props) => {
                             height="20px"
                         />
                     </a>
+                    <button
+                        className="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarToggler"
+                        aria-controls="navbarToggler"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span className="navbar-toggler-icon">
+                            <img
+                                alt="menu-mobile"
+                                className="menu-mobile w-100"
+                                src="/menu.png"
+                                onClick={toggleNavbar}
+                            />
+                        </span>
+                    </button>
                     <div
                         className={
                             navBarOpen
@@ -83,25 +101,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                             </li>
                         </ul>
                     </div>
-                    <div className="logo"></div>
-                    <button
-                        className="navbar-toggler"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#navbarToggler"
-                        aria-controls="navbarToggler"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation"
-                    >
-                        <span className="navbar-toggler-icon">
-                            <img
-                                alt="menu-mobile"
-                                className="w-100"
-                                src="/menu.png"
-                                onClick={toggleNavbar}
-                            />
-                        </span>
-                    </button>
+
                 </nav>
             </div>
         </Fragment>

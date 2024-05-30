@@ -1,152 +1,250 @@
-@media screen and (max-width: 1550px) {
-    //m1550
+@media (max-width: 1000px) {
+    //m1000
 
-    // #home-modal .containerWidth2 {
-    //     left: 17%;
-    // }
-}
+    #calendar {
+        .rdp {
+            width: 695px !important;
 
-@media (max-width: 1370px) {
-    //m1370
+            tr {
+                width: 680px !important;
+            }
 
-    // .logo {
-    //     width: 28vw;
-    // }
+            tbody td {
+                width: 95px !important;
+                min-width: 95px !important;
+                min-height: 90px !important;
 
-    #header a,
-    #header-transparent a {
-        font-size: 0.9rem;
+                .rdp-day {
+                    width: 85px !important;
+                    min-width: 85px !important;
+                    min-height: 85px !important;
+                }
+            }
+
+            .rdp-months .rdp-month {
+                .rdp-caption .rdp-caption_label {
+                    height: 45px;
+                    font-size: 18px;
+                }
+
+                table thead th {
+                    height: 28px !important;
+                    padding: 3px;
+                    font-size: 12.5px;
+                }
+            }
+        }
     }
 }
-
-@media screen and (max-width: 1300px) {
-    //m1300
-}
-
-@media (max-width: 1170px) {
-    //m1170
-
-    #navbar-toggler {
-        display: none !important;
-    }
-
-    .collapse:not(.show) {
-        display: none !important;
-    }
-
-    .navbar-toggler {
-        display: flex !important;
-        padding: 0.25rem 0.75rem;
-        font-size: 1.25rem;
-        line-height: 1;
-        background-color: transparent;
-        border: 1px solid transparent;
-        border-radius: 0.25rem;
-    }
-
-    .navbar {
-        position: relative;
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        -ms-flex-align: center;
-        align-items: center;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-        padding: 0.5rem 1rem;
-    }
-}
-
-
-@media screen and (max-width: 1100px) {
-    //m1100
-
-    // #home-modal .containerWidth2 {
-    //     width: 80% !important;
-    //     left: 20%;
-    // }
-}
-
 
 @media (max-width: 991px) {
     //m991
 
-    .layoutChild {
-        min-height: 94vh;
-        padding: 0px;
-        margin-top: 0px;
-    }
-
-    // .layoutChild>div {
-    //     // padding-top: 0px !important;
-    // }
-
     #header {
         box-shadow: none;
-        position: inherit;
-
-        nav {
-            padding: 10px 0px 0px 0px !important;
-        }
 
         .collapse li .nav-link {
-            padding: 2px;
-        }
-
-        .navbar-expand-lg .show {
-            box-shadow: 0px 8px 9px 0px #a8a7a781;
-            padding-bottom: 15px;
+            width: max-content;
+            padding: 5px 0px;
         }
     }
-}
 
-@media screen and (max-width: 900px) {
-    //m900
+    .navbar-toggler-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    #home-modal {
+        .home-popup-container {
+            display: block;
+            position: fixed;
+            overflow: scroll;
+            top: 4%;
+            width: 80%;
+            height: 93%;
+
+            .button-modal {
+                position: absolute !important;
+                left: 94% !important;
+                top: 5px !important;
+            }
+
+            .imageNASA {
+                padding-top: 10px !important;
+
+                img {
+                    border-radius: 5px;
+                    width: 60% !important;
+                    max-height: inherit !important;
+                    height: inherit !important;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 767px) {
     //m767
 
-    // #home-modal .containerWidth2 {
-    //     width: 90% !important;
-    //     left: 5%;
-    // }
+    #calendar {
+        .rdp {
+            width: 545px !important;
+
+            tr {
+                width: 530px !important;
+            }
+
+            tbody td {
+                width: 75px !important;
+                min-width: 75px !important;
+                min-height: 70px !important;
+
+                .rdp-day {
+                    width: 65px !important;
+                    min-width: 65px !important;
+                    min-height: 65px !important;
+                }
+            }
+
+            .rdp-months .rdp-month {
+                .rdp-caption .rdp-caption_label {
+                    height: 40px;
+                    font-size: 16px;
+                }
+
+                table thead th {
+                    height: 24px !important;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
 
     #home-modal .home-popup-container {
-        padding: 15px;
+        width: 85%;
 
-        .button-modal {
-            left: -5px;
-            top: -5px;
-        }
-
-        .divDataCalend {
-            border-right: none;
+        .imageNASA img {
+            width: 55% !important;
         }
     }
 }
 
-@media (max-width: 700px) {
-    //m700
-}
-
-@media (max-width: 700px) {
+@media (max-width: 600px) {
     //m600
 
-    #header-transparent #navbarToggler.show {
-        background: #001637;
-        z-index: 99;
-        padding: 0px 20px;
+    #calendar {
+        padding-left: 3px !important;
+        padding-right: 3px !important;
+
+        .rdp {
+            width: 390px !important;
+            margin: 3px !important;
+            padding: 3px !important;
+
+            tr {
+                width: 380px !important;
+                padding: 0px !important;
+            }
+
+            tbody td {
+                width: 51px !important;
+                min-width: 51px !important;
+                min-height: 50px !important;
+                padding: 0px !important;
+
+                .rdp-day {
+                    width: 45px !important;
+                    min-width: 45px !important;
+                    min-height: 45px !important;
+                }
+            }
+
+            .rdp-months .rdp-month {
+                .rdp-caption .rdp-caption_label {
+                    height: 40px;
+                    font-size: 16px;
+                }
+
+                table thead th {
+                    height: 24px !important;
+                    padding: 3px;
+                    font-size: 12px;
+                }
+            }
+        }
     }
+}
+
+@media (max-width: 500px) {
+    //m500
+
+    #calendar {
+        padding-left: 3px !important;
+        padding-right: 3px !important;
+        padding-top: 55px !important;
+
+        .rdp {
+            width: 325px !important;
+            margin: 3px !important;
+            padding: 3px !important;
+
+            tr {
+                width: 315px !important;
+                padding: 0px !important;
+            }
+
+            tbody td {
+                width: 43px !important;
+                min-width: 43px !important;
+                min-height: 43px !important;
+                padding: 0px !important;
+
+                .rdp-day {
+                    width: 40px !important;
+                    min-width: 40px !important;
+                    min-height: 40px !important;
+                }
+            }
+
+
+            .rdp-months .rdp-month {
+                .rdp-caption .rdp-caption_label {
+                    height: 30px;
+                    font-size: 14px;
+                }
+
+
+                table {
+                    thead th {
+
+                        padding: 5px;
+                        font-size: 11px;
+                    }
+
+                    tbody tr {
+                        padding: 1px 0px !important;
+                    }
+                }
+
+
+            }
+        }
+    }
+
 }
 
 @media (max-width: 400px) {
     //m400
-}
 
-@media (max-width: 340px) {
-    //m350
+    #home-modal .home-popup-container {
+        top: 3%;
+        width: 90%;
+
+        .imageNASA img {
+            width: 70% !important;
+        }
+    }
+
 }
 
 @media (max-width: 300px) {
