@@ -55,8 +55,8 @@ const Home: React.FC = () => {
       let endDate = `${y}-${m}-${endDay}`; // y último día del mes para usarlo como intervalo en la ruta de la api de la NASA.
       let urlApiMonth = '';
 
-      if (i <= Number(actualMonth)) {
-        urlApiMonth = `https://api.nasa.gov/planetary/apod?api_key=P14kKudfh6DmRLij0f5l6skIXJmzFnr5DuvwHp1R&start_date=${startDate}&end_date=${i == Number(actualMonth) ? actualDay : endDate}&thumbs=true`;
+      if (i <= Number(actualMonth)) { // Solo pediremos datos a la API de los meses transcurridos ya que no hay imagenes de los que no han transcurrido.
+        urlApiMonth = `https://api.nasa.gov/planetary/apod?api_key=P14kKudfh6DmRLij0f5l6skIXJmzFnr5DuvwHp1R&start_date=${startDate}&end_date=${i == Number(actualMonth) ? actualDay : endDate}&thumbs=true`; // actualDay se usa para el mes actual, ya que si pedimos un intervalo con una fecha que aúno no ha sucedido tenemos como respuesta un error.
         allUrls.push(axios.get(urlApiMonth)); // Juntamos las promesas.
       } else {
         urlApiMonth = '';
