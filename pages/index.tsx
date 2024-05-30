@@ -175,7 +175,7 @@ const Home: React.FC = () => {
           </div>
         </Layout>
       </div>
-      {actualData ? <div id="home-modal" className={stateModal ? '' : 'd-none'}>
+      {actualData ? <div id="home-modal" className={stateModal ? 'modalOn' : 'modalOff'}>
         <div
           id="home-modal-overlay"
           className="home-modal-overlay pointer"
